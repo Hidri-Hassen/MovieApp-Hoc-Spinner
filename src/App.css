@@ -1,38 +1,270 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Search Component */
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bf07ac;
+  padding: 2% 10%;
+}
+
+.search-container input {
+  outline: 0;
+  font-family: "Raleway", sans-serif;
+
+  border: 0.5px solid rgba(0, 0, 0, 0.295);
+  border-radius: 5px;
+  padding: 0.6em 1.5em;
+  width: 60%;
+  margin: 0 8%;
+}
+
+/* */
+.movie-list-container {
+  margin: 2% 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+}
+/* Movie Card  */
+
+
+.card__like {
+  width: 18px;
+}
+
+.card__clock {
+  width: 15px;
+  vertical-align: middle;
+  fill: #ad7d52;
+}
+.card__time {
+  font-size: 12px;
+  color: #ad7d52;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.card__clock-info {
+  float: right;
+}
+
+.card__img {
+  visibility: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 235px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card__info-hover {
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+}
+
+.card__img--hover {
+  transition: 0.2s all ease-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: absolute;
+  height: 235px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  top: 0;
+}
+.card {
+  margin: 25px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  /* width: 20%; */
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.1, 1.1);
+}
+
+.card__info {
+  /* z-index: 2; */
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #868686;
+}
+
+.card__title {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-family: "Roboto Slab", serif;
+}
+
+.card__by {
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0.7rem;
+}
+
+.card__author {
+  font-weight: 600;
+  text-decoration: none;
+  color: #ad7d52;
+}
+
+.card:hover .card__img--hover {
+  height: 100%;
+  opacity: 0.3;
+}
+
+.card:hover .card__info {
+  background-color: transparent;
+  position: relative;
+}
+
+.card:hover .card__info-hover {
+  opacity: 1;
+}
+
+
+/* Star Rating Component  */
+.stars {
+  display: flex;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+i {
+  cursor: pointer;
+  font-size: 1em;
+}
+.star-gold {
+  color: #f0c300;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Add movie   */
+.Add-btn{
+  width: 100px;
+  border: none ;
+  border-radius: 20px ;
+  background: rgba(202, 156, 24, 1);
+  color: ghostwhite;
+  padding: 2% 0;
+  cursor: pointer;
+  position: fixed;
+top: 0;
+left: 0;  
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Add-btn:focus {
+  outline: none;
+}
+.add-modal {
+  outline: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  right: 35%;
+  left: 35%;
+   top: 10%;
+  bottom: 10%; 
+  background-color:  #bf07ac;
+  border-radius: 5px;
+  color: ghostwhite;
 }
 
-.App-link {
-  color: #61dafb;
+.add-modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.add-modal form input{
+  padding: 0.5em;
+  border-radius: 5px ;
+  border: none;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+
+}
+
+.btn {
+  cursor: pointer;
+  padding: 1em;
+  border-radius: 3px;
+  border: 1px solid black;
+  background: none;
+  margin: 0 1em;
+  
+}
+
+.form-btn-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 0;
+  width: 60%;
+}
+
+@media (max-width: 1000px) {
+  .movie-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
   }
-  to {
-    transform: rotate(360deg);
+  .add-modal{
+   left: 30%;
+   right: 30%;
   }
+}
+
+@media (max-width: 700px) {
+  .movie-list-container {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+  }
+  .add-modal form 
+  .add-modal{
+    padding: 5em 5em;
+   left:25% ; 
+   right: 25%;
+  }
+}
+
+/* Spinner */
+.spinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 200px 50px 0 0;
+
+
 }
